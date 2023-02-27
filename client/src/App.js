@@ -1,6 +1,4 @@
 import Header from './components/Header';
-
-import SingleTodo from './components/SingleTodo';
 import { TodoProvider } from './TodoContext';
 import Todos from './components/Todos';
 

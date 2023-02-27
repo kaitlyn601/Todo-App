@@ -9,6 +9,7 @@ const useTodo = () => {
   const [setTasks, getData, tasks] = context;
   return { setTasks, getData, tasks };
 };
+
 const TodoProvider = ({ children }) => {
   const [tasks, setTasks] = useState(null);
   const getData = async () => {

@@ -8,7 +8,7 @@ function Modal({ mode, setShowModal, task }) {
   const editMode = mode === 'edit' ? true : false;
   const [data, setData] = useState({
     taskName: editMode ? task.taskName : null,
-    deadline: editMode ? task.deadline.slice(0, 10) : null,
+    deadline: editMode ? task.deadline.slice(0, 10) : new Date(),
     priority: editMode ? task.priority : 'Low',
   });
 
@@ -73,30 +73,30 @@ function Modal({ mode, setShowModal, task }) {
         </div>
         <form className='flex flex-col gap-3' action=''>
           <input
-            required
-            className='p-2 mt-3 border-2 focus:border-purple-400 focus:outline-none focus:ring-purple-400 rounded-lg border-gray-300'
             type='text'
             maxLength={50}
             placeholder='Enter your task'
             name='taskName'
+            required
             value={data.taskName}
             onChange={handleChange}
+            className='p-2 mt-3 border-2 focus:border-purple-400 focus:outline-none focus:ring-purple-400 rounded-lg border-gray-300'
           />
           <label
             className='block text-sm font-medium text-gray-700'
-            for='deadline'
+            htmlFor='deadline'
           >
             Deadline
           </label>
           <input
-            required
-            className=' block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-purple-400 focus:outline-none focus:ring-purple-400 sm:text-sm'
             id='deadline'
             type='date'
             min={moment(minDate).format('YYYY-MM-DD')}
             name='deadline'
             value={data.deadline}
             onChange={handleChange}
+            required
+            className=' block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-purple-400 focus:outline-none focus:ring-purple-400 sm:text-sm'
           />
 
           <label
@@ -106,6 +106,7 @@ function Modal({ mode, setShowModal, task }) {
             Priority
           </label>
           <select
+            id='priority'
             className='block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-purple-400 focus:outline-none focus:ring-purple-400 sm:text-sm'
             name='priority'
             value={data.priority}
