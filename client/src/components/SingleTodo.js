@@ -17,11 +17,12 @@ function SingleTodo({ task }) {
       console.log(err);
     }
   };
+
   return (
     <li className='grid grid-cols-6 w-full p-1 items-center rounded-md my-2 shadow-sm bg-gray-50'>
       <p className='col-span-2'>{task.taskName}</p>
       <p className='col-span-1'>{task.priority}</p>
-      <p className='col-span-1'>{task.deadline.slice(0, 10)}</p>
+      <p className='col-span-1'>{task.deadline?.slice(0, 10)}</p>
       <div className='col-span-2 justify-self-end pr-4'>
         <button
           className='text-sm border-2 px-3 py-1 rounded-full hover:bg-purple-300 border-purple-300 mr-3 ease-in-out duration-200'
