@@ -56,9 +56,9 @@ function Header() {
   return (
     <div className='flex-col flex w-full '>
       <div className='flex justify-between items-center'>
-        <h1 className='text-xl font-bold'>Todo List</h1>
+        <h1 className='text-2xl font-bold'>Todo List</h1>
         <button
-          className='px-3 py-2 rounded-md bg-purple-300 text-sm'
+          className='px-3 py-2 rounded-md bg-purple-300 text-sm hover:bg-purple-400 ease-out duration-100 hover:scale-105'
           onClick={() => setShowModal(true)}
         >
           Add New
@@ -75,6 +75,7 @@ function Header() {
           <option value='DescendingDate'>Descending Deadline</option>
         </select>
       </div>
+
       {showModal && <Modal mode={'create'} setShowModal={setShowModal} />}
     </div>
   );

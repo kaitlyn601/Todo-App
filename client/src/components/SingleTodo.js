@@ -18,16 +18,25 @@ function SingleTodo({ task }) {
     }
   };
   return (
-    <li className='w-full flex justify-between my-2'>
-      <div>
-        <p>{task.taskName}</p>
-        <p>{task.priority}</p>
-        <p>{task.deadline.slice(0, 10)}</p>
+    <li className='grid grid-cols-6 w-full p-1 items-center rounded-md my-2 shadow-sm bg-gray-50'>
+      <p className='col-span-2'>{task.taskName}</p>
+      <p className='col-span-1'>{task.priority}</p>
+      <p className='col-span-1'>{task.deadline.slice(0, 10)}</p>
+      <div className='col-span-2 justify-self-end pr-4'>
+        <button
+          className='text-sm border-2 px-3 py-1 rounded-full hover:bg-purple-300 border-purple-300 mr-3 ease-in-out duration-200'
+          onClick={() => setShowModal(true)}
+        >
+          Edit
+        </button>
+        <button
+          className='text-sm border-2 px-3 py-1 rounded-full hover:bg-red-300 border-red-300 ease-in-out duration-200'
+          onClick={deleteTask}
+        >
+          Delete
+        </button>
       </div>
-      <div className=''>
-        <button onClick={() => setShowModal(true)}>EDIT</button>
-        <button onClick={deleteTask}>DELETE</button>
-      </div>
+
       {showModal && (
         <Modal mode={'edit'} setShowModal={setShowModal} task={task} />
       )}
