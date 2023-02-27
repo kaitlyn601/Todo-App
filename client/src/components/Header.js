@@ -5,7 +5,7 @@ import { useTodo } from '../TodoContext';
 
 function Header() {
   const [showModal, setShowModal] = useState(false);
-  const { setTasks, tasks, getData } = useTodo();
+  const { setTasks, tasks } = useTodo();
 
   const handleChange = (e) => {
     const priorityValue = {
@@ -54,23 +54,25 @@ function Header() {
   };
 
   return (
-    <div className='w-full flex justify-between '>
-      <h1>To-Do List</h1>
-      <div className='flex items-center'>
+    <div className='flex-col flex w-full '>
+      <div className='flex justify-between items-center'>
+        <h1 className='text-xl font-bold'>Todo List</h1>
         <button
-          className='py-2 px-3 rounded-sm bg-pink-100'
+          className='px-3 py-2 rounded-md bg-purple-300 text-sm'
           onClick={() => setShowModal(true)}
         >
           Add New
         </button>
       </div>
-      <div>
-        <label htmlFor='SortBy'>SortBy</label>
+      <div className='flex justify-end my-4'>
         <select onChange={handleChange} name='' id='SortBy'>
+          <option value='none' selected disabled>
+            Sort By
+          </option>
           <option value='LowToHigh'>Ascending Priority</option>
           <option value='HighToLow'>Descending Priority</option>
-          <option value='AscendingDate'>Ascending Date</option>
-          <option value='DescendingDate'>Descending Date</option>
+          <option value='AscendingDate'>Ascending Deadline</option>
+          <option value='DescendingDate'>Descending Deadline</option>
         </select>
       </div>
       {showModal && <Modal mode={'create'} setShowModal={setShowModal} />}
