@@ -7,8 +7,10 @@ function Modal({ mode, setShowModal, task }) {
   const { getData } = useTodo();
   const editMode = mode === 'edit' ? true : false;
   const [data, setData] = useState({
-    taskName: editMode ? task.taskName : null,
-    deadline: editMode ? task.deadline.slice(0, 10) : new Date(),
+    taskName: editMode ? task.taskName : '',
+    deadline: editMode
+      ? task.deadline.slice(0, 10)
+      : moment(new Date()).format('YYYY-MM-DD'),
     priority: editMode ? task.priority : 'Low',
   });
 
@@ -28,7 +30,6 @@ function Modal({ mode, setShowModal, task }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      console.log(res);
       if (res.status === 200 || 201) {
         console.log('added task');
         setShowModal(false);
@@ -46,7 +47,6 @@ function Modal({ mode, setShowModal, task }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      console.log(res);
       if (res.status === 200 || 201) {
         console.log('edited task');
         setShowModal(false);
@@ -101,7 +101,7 @@ function Modal({ mode, setShowModal, task }) {
 
           <label
             className='block text-sm font-medium text-gray-700'
-            for='priority'
+            htmlFor='priority'
           >
             Priority
           </label>
@@ -112,9 +112,6 @@ function Modal({ mode, setShowModal, task }) {
             value={data.priority}
             onChange={handleChange}
           >
-            <option value='none' selected disabled hidden>
-              Select option
-            </option>
             <option value='Low'>Low</option>
             <option value='Medium'>Medium</option>
             <option value='High'>High</option>

@@ -68,12 +68,9 @@ function Header() {
         <select
           className='p-2 mt-3 border-2 focus:border-purple-400 focus:outline-none focus:ring-purple-400 rounded-lg border-gray-300'
           onChange={handleChange}
-          name=''
           id='SortBy'
         >
-          <option value='none' selected disabled>
-            Sort By
-          </option>
+          <option value='sortBy'>Sort By</option>
           <option value='LowToHigh'>Ascending Priority</option>
           <option value='HighToLow'>Descending Priority</option>
           <option value='AscendingDate'>Ascending Deadline</option>

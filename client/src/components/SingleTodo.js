@@ -12,6 +12,7 @@ function SingleTodo({ task }) {
       });
       if (res.status === 201 || 200) {
         getData();
+        console.log('deleted task');
       }
     } catch (err) {
       console.log(err);

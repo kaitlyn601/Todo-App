@@ -4,7 +4,6 @@ import SingleTodo from './SingleTodo';
 
 function Todos() {
   const { tasks } = useTodo();
-  console.log(tasks);
   return (
     <div>
       <div className='grid grid-cols-6'>
